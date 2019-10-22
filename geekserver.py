@@ -2,9 +2,9 @@ import socket
 
 s = socket.socket()
 
-port = 98012
+port = 9812
 
-s.bin(('', port))
+s.bind(('', port))
 print('[*] bind socket to port: %s.' %(port))
 
 s.listen(5)
@@ -12,10 +12,9 @@ print('[*] port started listening.')
 
 while True:
     c, addr = s.accept()
-    print('[*] connection recieved addr: %s.' %addr)
+    print('[*] connection recieved addr: ' + str(addr) + '.')
 
-    c.send('this is some response')
+    c.send(b'this is some response')
     print('[*] response sended back.')
 
     c.close()
-    
